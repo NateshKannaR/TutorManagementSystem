@@ -1,4 +1,3 @@
-// src/components/NavBar.jsx
 import React from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
@@ -6,11 +5,10 @@ import "./NavBar.css";
 function NavBar() {
   return (
     <nav className="navbar">
-      <h1>Tutor Portal</h1>
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/apply">Apply</Link></li>
-        <li><Link to="/tutors">Tutors</Link></li>
+      <h1 className="title">Tutor Application</h1>
+      <ul className="nav-links">
+        <li><Link to="/" className="nav-link">Home</Link></li>
+        <li><Link to="/getAllTutors" className="nav-link">Tutor Details</Link></li>
       </ul>
     </nav>
   );
