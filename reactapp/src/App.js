@@ -1,6 +1,5 @@
 import logo from './logo.svg';
 import './App.css';
-git remote add init <https://github.com/NateshKannaR/TutorManagementSystem.git>
 function App() {
   return (
     <div className="App">
