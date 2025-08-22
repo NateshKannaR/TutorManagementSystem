@@ -1,9 +1,12 @@
-import React from 'react';
-export default function Footer(){
- return (
-  <footer style={{textAlign:'center', marginTop:40}}>
-   <small>© 2023 Tutor Application. All rights reserved.</small>
-  </footer>
- );
+import React from "react";
+import "./Footer.css";
+
+function Footer() {
+  return (
+    <footer className="footer">
+      <p>© 2023 Tutor Application. All rights reserved.</p>
+    </footer>
+  );
 }
 
+export default Footer;

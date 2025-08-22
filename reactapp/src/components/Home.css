@@ -1,0 +1,16 @@
+.home {
+  text-align: center;
+  padding: 40px;
+}
+.btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+}
+.btn:hover {
+  background: #0056b3;
+}
