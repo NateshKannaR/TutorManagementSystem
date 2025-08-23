@@ -14,6 +14,7 @@ function ApplyForm() {
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState("");
 
+  // Form validation
   const validate = () => {
     const e = {};
     if (!formData.name) e.name = "Name is required";
@@ -23,14 +24,17 @@ function ApplyForm() {
     else if (isNaN(formData.experience) || formData.experience < 0)
       e.experience = "Experience must be a valid number or at least 0";
     if (!formData.phoneNumber) e.phoneNumber = "Phone Number is required";
-    else if (!/^\d{10}$/.test(formData.phoneNumber)) e.phoneNumber = "Invalid phone number format";
+    else if (!/^\d{10}$/.test(formData.phoneNumber))
+      e.phoneNumber = "Invalid phone number format";
     return e;
   };
 
+  // Handle input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
@@ -39,12 +43,14 @@ function ApplyForm() {
       return;
     }
     setErrors({});
+
     try {
-      const res = await fetch(`${API_BASE_URL}/getAllTutors/addTutor`, {
+      const res = await fetch(`${API_BASE_URL}/addTutor`, {  // Correct endpoint
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...formData, experience: Number(formData.experience) }),
       });
+
       if (res.ok) {
         setSuccess("Application submitted successfully!");
         setFormData({ name: "", qualification: "", subject: "", experience: "", phoneNumber: "" });
@@ -52,8 +58,7 @@ function ApplyForm() {
         const msg = await res.text();
         setSuccess(`Submission failed: ${msg}`);
       }
-
-} catch (err) {
+   } catch (err) {
 console.error(err);
 setSuccess("Submission failed due to network error.");
 }
