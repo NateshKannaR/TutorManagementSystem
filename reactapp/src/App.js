@@ -1,31 +1,22 @@
-// src/App.js
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
-// Components
 import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
 import Home from "./components/Home";
 import ApplyForm from "./components/ApplyForm";
 import DisplayTutor from "./components/DisplayTutor";
+import Footer from "./components/Footer";
+import "./App.css";
 
 function App() {
   return (
     <Router>
-      <div className="app-container">
-        {/* Navigation bar */}
+      <div className="app">
         <NavBar />
-
-        {/* Main Routes */}
-        <main style={{ padding: "20px", minHeight: "80vh" }}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/apply" element={<ApplyForm />} />
-            <Route path="/tutors" element={<DisplayTutor />} />
-          </Routes>
-        </main>
-
-        {/* Footer */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/apply" element={<ApplyForm />} />
+          <Route path="/getAllTutors" element={<DisplayTutor />} />
+        </Routes>
         <Footer />
       </div>
     </Router>
