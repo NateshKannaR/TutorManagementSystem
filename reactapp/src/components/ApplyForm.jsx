@@ -1,46 +1,52 @@
-// src/components/ApplyForm.jsx
 import React, { useState } from "react";
-import API_BASE_URL from "../apiConfig";
-import "./ApplyForm.css";
 
 function ApplyForm() {
-  const [formData, setFormData] = useState({ name: "", email: "", subject: "" });
-  const [message, setMessage] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    qualification: "",
+    subject: "",
+    experience: "",
+    phoneNumber: ""
+  });
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.subject) {
-      setMessage("All fields are required");
-      return;
-    }
-
     try {
-      const response = await fetch(`${API_BASE_URL}/apply`, {
+      const response = await fetch("http://localhost:8080/tutors", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
       });
 
       if (response.ok) {
-        setMessage("Application submitted successfully!");
-        setFormData({ name: "", email: "", subject: "" });
+        alert("Application submitted successfully!");
+        setFormData({
+          name: "",
+          qualification: "",
+          subject: "",
+          experience: "",
+          phoneNumber: ""
+        });
       } else {
-        setMessage("Failed to submit application.");
+        alert("Failed to submit application");
       }
     } catch (error) {
-      console.error("Error submitting form:", error);
-      setMessage("Error submitting form");
+      console.error("Error:", error);
+      alert("Error submitting application");
     }
   };
 
   return (
-    <div className="apply-form">
+    <div className="apply-form-container">
       <h2>Apply as Tutor</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="apply-form">
         <input
           type="text"
           name="name"
@@ -50,10 +56,10 @@ function ApplyForm() {
           required
         />
         <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
+          type="text"
+          name="qualification"
+          placeholder="Qualification"
+          value={formData.qualification}
           onChange={handleChange}
           required
         />
@@ -65,9 +71,24 @@ function ApplyForm() {
           onChange={handleChange}
           required
         />
-        <button type="submit">Submit</button>
+        <input
+          type="number"
+          name="experience"
+          placeholder="Experience (years)"
+          value={formData.experience}
+          onChange={handleChange}
+          required
+        />
+        <input
+          type="text"
+          name="phoneNumber"
+          placeholder="Phone Number"
+          value={formData.phoneNumber}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit">Submit Application</button>
       </form>
-      {message && <p>{message}</p>}
     </div>
   );
 }
