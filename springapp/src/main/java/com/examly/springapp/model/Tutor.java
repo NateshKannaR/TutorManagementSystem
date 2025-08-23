@@ -18,8 +18,7 @@ public class Tutor {
     private int experience;
     private String phoneNumber;
 
-    public Tutor() {
-    }
+    public Tutor() {}
 
     public Tutor(String name, String qualification, String subject, int experience, String phoneNumber) {
         this.name = name;
@@ -29,51 +28,22 @@ public class Tutor {
         this.phoneNumber = phoneNumber;
     }
 
-    public int getId() {
-        return id;
-    }
+    // Getters & Setters
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public String getName() {
-        return name;
-    }
+    public String getQualification() { return qualification; }
+    public void setQualification(String qualification) { this.qualification = qualification; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getSubject() { return subject; }
+    public void setSubject(String subject) { this.subject = subject; }
 
-    public String getQualification() {
-        return qualification;
-    }
+    public int getExperience() { return experience; }
+    public void setExperience(int experience) { this.experience = experience; }
 
-    public void setQualification(String qualification) {
-        this.qualification = qualification;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
-    public int getExperience() {
-        return experience;
-    }
-
-    public void setExperience(int experience) {
-        this.experience = experience;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
+    public String getPhoneNumber() { return phoneNumber; }
+    public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
 }
