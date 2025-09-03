@@ -21,12 +21,15 @@ public class TutorController {
     }
 
     @PostMapping("/addTutor")
-    public ResponseEntity<?> addTutor(@RequestBody Tutor tutor) {
+    public ResponseEntity<?> addTutor(@RequestBody Tutor tutor, 
+                                     @RequestHeader(value = "X-Username", required = false) String username) {
         try {
             Tutor savedTutor = tutorService.addTutor(tutor);
             return ResponseEntity.ok(savedTutor);
         } catch (InvalidExperienceException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error processing application");
         }
     }
 

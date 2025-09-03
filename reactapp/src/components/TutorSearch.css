@@ -1,0 +1,89 @@
+.tutor-search {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tutor-search h2 {
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.search-form {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: end;
+}
+
+.form-group {
+  flex: 1;
+  min-width: 200px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.search-form button {
+  padding: 0.75rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.search-form button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.search-results {
+  margin-top: 2rem;
+}
+
+.tutors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.tutor-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.tutor-card h3 {
+  margin: 0 0 1rem 0;
+  color: #333;
+}
+
+.tutor-card p {
+  margin: 0.5rem 0;
+  color: #666;
+}
+
+.tutor-card strong {
+  color: #333;
+}

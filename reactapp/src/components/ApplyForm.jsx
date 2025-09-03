@@ -45,23 +45,30 @@ function ApplyForm() {
     setErrors({});
 
     try {
-      const res = await fetch(`${API_BASE_URL}/addTutor`, {  // Correct endpoint
+      const username = localStorage.getItem('username');
+      const tutorData = { ...formData, experience: Number(formData.experience) };
+      
+      const res = await fetch(`${API_BASE_URL}/addTutor`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...formData, experience: Number(formData.experience) }),
+        headers: { 
+          "Content-Type": "application/json",
+          "X-Username": username || ""
+        },
+        body: JSON.stringify(tutorData),
       });
 
       if (res.ok) {
         setSuccess("Application submitted successfully!");
         setFormData({ name: "", qualification: "", subject: "", experience: "", phoneNumber: "" });
       } else {
-        const msg = await res.text();
-        setSuccess(`Submission failed: ${msg}`);
+        const errorText = await res.text();
+        console.error('Server response:', res.status, errorText);
+        setSuccess(`Submission failed: ${errorText}`);
       }
    } catch (err) {
-console.error(err);
-setSuccess("Submission failed due to network error.");
-}
+        console.error('Network error:', err);
+        setSuccess("Submission failed due to network error.");
+    }
 };
 
 return (
