@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { API_BASE_URL } from "../apiConfig";
+import BubbleBackground from "./BubbleBackground";
 import "./Notifications.css";
 
 function Notifications() {
@@ -59,6 +60,7 @@ function Notifications() {
 
   return (
     <div className="notifications">
+      <BubbleBackground count={8} color="#f59e0b" />
       <div className="notifications-header">
         <h2>Notifications</h2>
         {unreadCount > 0 && (

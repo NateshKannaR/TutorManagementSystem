@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./Home.css";
 
 function Home() {
@@ -9,7 +8,7 @@ function Home() {
       <p>
         Join our community of skilled tutors and help students achieve their academic goals!
       </p>
-      <Link to="/apply" className="btn">Become a Tutor</Link>
+      <a href="/apply" className="btn">Become a Tutor</a>
     </main>
   );
 }

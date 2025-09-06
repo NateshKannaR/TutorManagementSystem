@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import BubbleBackground from "./BubbleBackground";
 import "./ApplyForm.css";
 import { API_BASE_URL } from "../apiConfig";
 
@@ -72,6 +73,8 @@ function ApplyForm() {
 };
 
 return (
+<>
+<BubbleBackground count={6} color="#7c3aed" />
 <div className="form-container">
 <h2>Apply to Become a Tutor</h2>
 {success && <p className="success">{success}</p>}
@@ -99,6 +102,7 @@ return (
 <button type="submit">Submit Application</button>
 </form>
 </div>
+</>
 );
 }
 

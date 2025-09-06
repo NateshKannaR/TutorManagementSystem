@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { API_BASE_URL } from "../apiConfig";
 import "./Login.css";
 
-function Login({ onLogin }) {
+function Login({ onLogin, isAdmin = false }) {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -17,7 +17,8 @@ function Login({ onLogin }) {
     setError("");
 
     try {
-      const res = await fetch(`${API_BASE_URL}/auth/login`, {
+      const endpoint = isAdmin ? '/auth/admin-login' : '/auth/login';
+      const res = await fetch(`${API_BASE_URL}${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -42,12 +43,12 @@ function Login({ onLogin }) {
 
   return (
     <div className="login-container">
-      <h2>Login</h2>
+      <h2>{isAdmin ? 'Admin Login' : 'Login'}</h2>
       {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
         <input
           name="username"
-          placeholder="Username"
+          placeholder={isAdmin ? 'Admin Username' : 'Username'}
           value={formData.username}
           onChange={handleChange}
           required

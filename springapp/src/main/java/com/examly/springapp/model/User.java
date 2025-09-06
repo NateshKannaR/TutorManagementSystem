@@ -21,7 +21,7 @@ public class User {
     private String password;
     
     @Enumerated(EnumType.STRING)
-    private Role role = Role.TUTOR;
+    private Role role = Role.STUDENT;
     
     private boolean enabled = true;
     private boolean twoFactorEnabled = false;
@@ -34,7 +34,7 @@ public class User {
     private LocalDateTime lastLogin;
 
     public enum Role {
-        GUEST, TUTOR, EDUCATION_MANAGER, SYSTEM_ADMINISTRATOR
+        GUEST, TUTOR, STUDENT, SYSTEM_ADMINISTRATOR, ADMIN
     }
 
     // Constructors

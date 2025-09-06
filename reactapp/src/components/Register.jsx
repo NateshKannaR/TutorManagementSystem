@@ -76,7 +76,7 @@ function Register({ onRegister }) {
         />
         <select name="role" value={formData.role} onChange={handleChange}>
           <option value="TUTOR">Tutor</option>
-          <option value="EDUCATION_MANAGER">Education Manager</option>
+          <option value="STUDENT">Student</option>
         </select>
         <button type="submit" disabled={loading}>
           {loading ? "Registering..." : "Register"}

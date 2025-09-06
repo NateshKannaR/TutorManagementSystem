@@ -1,0 +1,84 @@
+.student-list {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.header-with-live {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.student-list h2 {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.live-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #06b6d4;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  background: #06b6d4;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.student-list table {
+  width: 100%;
+  background: rgba(30, 30, 46, 0.8);
+  backdrop-filter: blur(20px);
+  border-radius: 12px;
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  overflow: hidden;
+  border-collapse: collapse;
+}
+
+.student-list thead {
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+}
+
+.student-list th {
+  color: white;
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.student-list td {
+  color: #e4e6ea;
+  padding: 16px;
+  border-bottom: 1px solid rgba(61, 61, 92, 0.3);
+  font-size: 14px;
+}
+
+.student-list tbody tr:hover {
+  background: rgba(6, 182, 212, 0.05);
+}
+
+.student-list tbody tr:last-child td {
+  border-bottom: none;
+}

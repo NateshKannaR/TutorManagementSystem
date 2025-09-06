@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { API_BASE_URL } from "../apiConfig";
+import BubbleBackground from "./BubbleBackground";
 import "./TutorSearch.css";
 
 function TutorSearch() {
@@ -38,6 +39,7 @@ function TutorSearch() {
 
   return (
     <div className="tutor-search">
+      <BubbleBackground count={10} color="#06b6d4" />
       <h2>Find Tutors</h2>
       
       <form onSubmit={handleSearch} className="search-form">

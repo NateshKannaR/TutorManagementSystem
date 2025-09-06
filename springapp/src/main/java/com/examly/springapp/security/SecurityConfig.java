@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .authorizeRequests()
                 .antMatchers("/auth/**", "/addTutor", "/getAllTutors", "/applications/**", "/notifications/**", "/matching/**").permitAll()
                 .antMatchers("/admin/**").hasRole("SYSTEM_ADMINISTRATOR")
-                .antMatchers("/manager/**").hasAnyRole("EDUCATION_MANAGER", "SYSTEM_ADMINISTRATOR")
+                .antMatchers("/manager/**").hasAnyRole("STUDENT", "SYSTEM_ADMINISTRATOR")
                 .anyRequest().permitAll()
             .and()
             .cors();

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { API_BASE_URL } from "../apiConfig";
+import BubbleBackground from "./BubbleBackground";
 import "./Dashboard.css";
 
 function Dashboard() {
@@ -11,7 +12,7 @@ function Dashboard() {
 
   const fetchDashboardData = useCallback(async () => {
     try {
-      if (role === "SYSTEM_ADMINISTRATOR" || role === "EDUCATION_MANAGER") {
+      if (role === "SYSTEM_ADMINISTRATOR" || role === "STUDENT") {
         const analyticsRes = await fetch(`${API_BASE_URL}/admin/analytics/dashboard`);
         if (analyticsRes.ok) {
           const data = await analyticsRes.json();
@@ -65,9 +66,10 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
+      <BubbleBackground count={12} color="#10b981" />
       <h2>Dashboard</h2>
       
-      {(role === "SYSTEM_ADMINISTRATOR" || role === "EDUCATION_MANAGER") && (
+      {(role === "SYSTEM_ADMINISTRATOR" || role === "STUDENT") && (
         <div className="analytics-section">
           <h3>Analytics</h3>
           <div className="stats-grid">
@@ -102,7 +104,7 @@ function Dashboard() {
                 <p>Status: <span className={`status ${app.status.toLowerCase()}`}>{app.status}</span></p>
                 <p>Submitted: {new Date(app.submissionDate).toLocaleDateString()}</p>
                 
-                {(role === "EDUCATION_MANAGER" || role === "SYSTEM_ADMINISTRATOR") && app.status === "SUBMITTED" && (
+                {(role === "STUDENT" || role === "SYSTEM_ADMINISTRATOR") && app.status === "SUBMITTED" && (
                   <div className="action-buttons">
                     <button 
                       onClick={() => updateApplicationStatus(app.id, "APPROVED", "Application approved")}

@@ -1,0 +1,51 @@
+.admin-dashboard {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.admin-dashboard h1 {
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.analytics-card {
+  background: rgba(30, 30, 46, 0.8);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  transition: all 0.3s ease;
+}
+
+.analytics-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 70px rgba(239, 68, 68, 0.2);
+}
+
+.analytics-card h3 {
+  color: #ef4444;
+  margin-bottom: 1rem;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.analytics-card .count {
+  color: #ffffff;
+  font-size: 48px;
+  font-weight: 800;
+  margin: 0;
+}

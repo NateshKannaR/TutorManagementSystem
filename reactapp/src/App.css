@@ -1,8 +1,99 @@
 .app {
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: #0a0a0f;
+  color: #e4e6ea;
+  position: relative;
+  overflow: hidden;
+}
+
+.app::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(79, 70, 229, 0.3) 0%, transparent 40%),
+    radial-gradient(circle at 70% 60%, rgba(124, 58, 237, 0.2) 0%, transparent 35%),
+    radial-gradient(circle at 40% 80%, rgba(6, 182, 212, 0.25) 0%, transparent 45%);
+  animation: bubbleFloat 12s ease-in-out infinite;
+  z-index: -10;
+}
+
+.app::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.2) 0%, transparent 30%),
+    radial-gradient(circle at 30% 70%, rgba(245, 158, 11, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 60% 40%, rgba(239, 68, 68, 0.1) 0%, transparent 35%);
+  animation: bubbleFloat 15s ease-in-out infinite reverse;
+  z-index: -9;
+}
+
+@keyframes bubbleFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(20px, -30px) scale(1.1); }
+  50% { transform: translate(-15px, -20px) scale(0.9); }
+  75% { transform: translate(25px, 10px) scale(1.05); }
+}
+
+.app .floating-orbs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -6;
+}
+
+.app .orb {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.3), rgba(79, 70, 229, 0.2));
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: bubbleRise 8s ease-in-out infinite;
+  box-shadow: 0 8px 32px rgba(79, 70, 229, 0.2);
+}
+
+.app .orb:nth-child(1) {
+  width: 80px;
+  height: 80px;
+  top: 80%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.app .orb:nth-child(2) {
+  width: 60px;
+  height: 60px;
+  top: 90%;
+  right: 15%;
+  animation-delay: 2s;
+}
+
+.app .orb:nth-child(3) {
+  width: 100px;
+  height: 100px;
+  top: 85%;
+  left: 50%;
+  animation-delay: 4s;
+}
+
+@keyframes bubbleRise {
+  0% { transform: translateY(0px) scale(0.8); opacity: 0.7; }
+  50% { transform: translateY(-50vh) scale(1); opacity: 0.9; }
+  100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
 }
 
 .auth-container {
@@ -11,51 +102,100 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #f5f5f5;
+  padding: 2rem;
+  position: relative;
+}
+
+.auth-container::before {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: conic-gradient(from 0deg, #4f46e5, #7c3aed, #06b6d4, #4f46e5);
+  border-radius: 50%;
+  animation: spinFloat 4s linear infinite;
+  top: 10%;
+  right: 10%;
+  opacity: 0.6;
+}
+
+.auth-container::after {
+  content: '';
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: conic-gradient(from 180deg, #10b981, #f59e0b, #ef4444, #10b981);
+  border-radius: 50%;
+  animation: spinFloat 6s linear infinite reverse;
+  bottom: 15%;
+  left: 15%;
+  opacity: 0.5;
+}
+
+@keyframes spinFloat {
+  0% { transform: rotate(0deg) translateY(0px); }
+  25% { transform: rotate(90deg) translateY(-10px); }
+  50% { transform: rotate(180deg) translateY(0px); }
+  75% { transform: rotate(270deg) translateY(10px); }
+  100% { transform: rotate(360deg) translateY(0px); }
 }
 
 .auth-toggle {
   display: flex;
   margin-bottom: 2rem;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  background: #1e1e2e;
+  border: 1px solid #2d2d44;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
 }
 
 .auth-toggle button {
-  padding: 1rem 2rem;
+  flex: 1;
+}
+
+.auth-toggle button {
+  padding: 14px 28px;
   border: none;
-  background: white;
+  background: transparent;
   cursor: pointer;
-  font-size: 1rem;
-  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 500;
+  color: #a0a0a0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .auth-toggle button.active {
-  background: #007bff;
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
   color: white;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
 }
 
 .auth-toggle button:hover {
-  background: #e9ecef;
+  color: #e4e6ea;
+  background: #2d2d44;
 }
 
 .auth-toggle button.active:hover {
-  background: #0056b3;
+  background: linear-gradient(135deg, #5b52e8, #8b46f0);
 }
 
 .error {
-  color: #dc3545;
-  background: #f8d7da;
-  padding: 0.75rem;
-  border-radius: 4px;
+  color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.2);
+  padding: 12px 16px;
+  border-radius: 8px;
   margin: 1rem 0;
+  font-size: 14px;
 }
 
 .success {
-  color: #155724;
-  background: #d4edda;
-  padding: 0.75rem;
-  border-radius: 4px;
+  color: #51cf66;
+  background: rgba(81, 207, 102, 0.1);
+  border: 1px solid rgba(81, 207, 102, 0.2);
+  padding: 12px 16px;
+  border-radius: 8px;
   margin: 1rem 0;
+  font-size: 14px;
 }

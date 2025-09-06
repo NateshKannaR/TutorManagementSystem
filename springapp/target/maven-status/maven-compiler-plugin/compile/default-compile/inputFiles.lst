@@ -2,12 +2,16 @@
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/FileUploadService.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/model/Tutor.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/AdminController.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/model/Student.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/NotificationController.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/LiveDataController.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/ActivityLogService.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/NotificationService.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/model/Document.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/DataController.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/TutorMatchingController.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/UserRepository.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/StudentRepo.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/model/User.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/model/Application.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/TutorRepo.java
@@ -15,6 +19,8 @@
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/dto/RegisterRequest.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/AuthService.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/dto/AuthResponse.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/DataGeneratorService.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/StudentController.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/AdminService.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/TutorController.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/dto/ApplicationStatusUpdateRequest.java
@@ -26,6 +32,7 @@
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/ApplicationService.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/TutorMatchingService.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/AnalyticsService.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/AdminAuthController.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/AuthController.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/configuration/CorsConfiguration.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/TutorService.java

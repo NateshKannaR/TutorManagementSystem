@@ -1,7 +1,96 @@
 .notifications {
-  padding: 2rem;
   max-width: 800px;
-  margin: 0 auto;
+  margin: 2rem auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+  min-height: calc(100vh - 140px);
+}
+
+.notification-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.signal-waves {
+  position: absolute;
+  top: 20%;
+  right: 10%;
+  width: 100px;
+  height: 100px;
+}
+
+.signal {
+  position: absolute;
+  border: 2px solid rgba(245, 158, 11, 0.4);
+  border-radius: 50%;
+  animation: signalPulse 3s ease-out infinite;
+}
+
+.signal:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.signal:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.signal:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.signal:nth-child(4) {
+  animation-delay: 1.5s;
+}
+
+.floating-icons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.icon {
+  position: absolute;
+  font-size: 24px;
+  animation: floatIcon 8s ease-in-out infinite;
+  opacity: 0.6;
+}
+
+.icon:nth-child(1) {
+  top: 30%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.icon:nth-child(2) {
+  top: 70%;
+  right: 20%;
+  animation-delay: 2s;
+}
+
+.icon:nth-child(3) {
+  bottom: 40%;
+  left: 70%;
+  animation-delay: 4s;
+}
+
+@keyframes signalPulse {
+  0% { width: 0; height: 0; opacity: 1; }
+  100% { width: 100px; height: 100px; opacity: 0; }
+}
+
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-20px) rotate(90deg); }
+  50% { transform: translateY(0px) rotate(180deg); }
+  75% { transform: translateY(20px) rotate(270deg); }
 }
 
 .notifications-header {
@@ -9,19 +98,26 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
+  background: rgba(30, 30, 46, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(245, 158, 11, 0.2);
 }
 
 .notifications-header h2 {
+  color: #ffffff;
   margin: 0;
-  color: #333;
+  font-size: 28px;
+  font-weight: 700;
 }
 
 .unread-badge {
-  background-color: #dc3545;
+  background: #f59e0b;
   color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 12px;
-  font-size: 0.8rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
   font-weight: bold;
 }
 
@@ -32,22 +128,23 @@
 }
 
 .notification-item {
-  background: white;
+  background: rgba(30, 30, 46, 0.8);
+  backdrop-filter: blur(10px);
   padding: 1.5rem;
-  border-radius: 8px;
-  border: 1px solid #dee2e6;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  border: 1px solid rgba(245, 158, 11, 0.2);
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.3s ease;
 }
 
 .notification-item:hover {
-  background-color: #f8f9fa;
+  transform: translateX(5px);
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
 }
 
 .notification-item.unread {
-  border-left: 4px solid #007bff;
-  background-color: #f8f9ff;
+  border-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
 }
 
 .notification-header {
@@ -58,18 +155,19 @@
 }
 
 .notification-header h4 {
+  color: #ffffff;
   margin: 0;
-  color: #333;
+  font-size: 16px;
 }
 
 .notification-date {
-  color: #666;
-  font-size: 0.8rem;
+  color: #a0a0a0;
+  font-size: 12px;
 }
 
 .notification-message {
-  margin: 0.5rem 0;
-  color: #555;
+  color: #e4e6ea;
+  margin-bottom: 1rem;
   line-height: 1.5;
 }
 
@@ -77,40 +175,38 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1rem;
 }
 
 .notification-type {
-  padding: 0.25rem 0.5rem;
+  padding: 4px 8px;
   border-radius: 4px;
-  font-size: 0.7rem;
+  font-size: 12px;
   font-weight: bold;
-  text-transform: uppercase;
 }
 
-.notification-type.application_status {
-  background-color: #007bff;
-  color: white;
+.notification-type.info {
+  background: rgba(6, 182, 212, 0.2);
+  color: #06b6d4;
 }
 
-.notification-type.system_alert {
-  background-color: #ffc107;
-  color: #212529;
+.notification-type.warning {
+  background: rgba(245, 158, 11, 0.2);
+  color: #f59e0b;
 }
 
-.notification-type.reminder {
-  background-color: #17a2b8;
-  color: white;
+.notification-type.error {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
 }
 
 .unread-indicator {
-  color: #007bff;
-  font-size: 1.2rem;
+  color: #f59e0b;
+  font-size: 18px;
 }
 
 .no-notifications {
   text-align: center;
-  color: #666;
+  color: #a0a0a0;
   font-style: italic;
   padding: 2rem;
 }

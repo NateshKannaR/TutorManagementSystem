@@ -1,22 +1,37 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./NavBar.css";
 
-function NavBar({ onLogout, userRole }) {
-  const username = localStorage.getItem('username');
+function NavBar({ onLogout = () => {}, userRole }) {
+  const username = localStorage.getItem('username') || 'testuser';
 
   return (
     <nav className="navbar">
       <h1 className="title">Tutor Application</h1>
       <ul className="nav-links">
-        <li><Link to="/" className="nav-link">Home</Link></li>
-        <li><Link to="/dashboard" className="nav-link">Dashboard</Link></li>
-        <li><Link to="/getAllTutors" className="nav-link">Tutor Details</Link></li>
-        <li><Link to="/search" className="nav-link">Search Tutors</Link></li>
-        <li><Link to="/notifications" className="nav-link">Notifications</Link></li>
+        <li><a href="/" className="nav-link">Home</a></li>
+        <li><a href="/dashboard" className="nav-link">Dashboard</a></li>
+        
         {userRole === 'TUTOR' && (
-          <li><Link to="/apply" className="nav-link">Apply</Link></li>
+          <>
+            <li><a href="/apply" className="nav-link">Apply as Tutor</a></li>
+            <li><a href="/getAllTutors" className="nav-link">Tutor Details</a></li>
+          </>
         )}
+        
+        {userRole === 'STUDENT' && (
+          <>
+            <li><a href="/student-register" className="nav-link">Register as Student</a></li>
+            <li><a href="/getAllStudents" className="nav-link">View Students</a></li>
+            <li><a href="/search-students" className="nav-link">Search Students</a></li>
+          </>
+        )}
+        
+        {(!userRole || userRole === 'STUDENT') && (
+          <li><a href="/getAllTutors" className="nav-link">Tutor Details</a></li>
+        )}
+        
+        <li><a href="/search" className="nav-link">Search Tutors</a></li>
+        <li><a href="/notifications" className="nav-link">Notifications</a></li>
       </ul>
       <div className="navbar-user">
         <span className="user-info">
